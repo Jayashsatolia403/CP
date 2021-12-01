@@ -4,35 +4,39 @@ using namespace std;
 
 #define forn(i, n) for (int i = 0; i < n; i++)
 
+int good_i, good_j;
 
-bool dfs(int i, int j, string seq) {
+bool check(int i, int j, string seq, int left, int right) {
+
     int n = seq.size();
 
 
-    forn (i, n) {
-        if (seq[i] == 'L') {
-            i--;
+    forn (k, n) {
+        if (seq[k] == 'L') {
+            --j;
             
-            if (i < 0) return false;
-        } else if (seq[i] == 'R') {
-            i++;
-
-            if (i > n-1) return false;
-        } else if (seq[i] == 'U') {
-            j--;
-
             if (j < 0) return false;
+        } else if (seq[k] == 'R') {
+            ++j;
+
+            if (j > right) return false;
+        } else if (seq[k] == 'U') {
+            --i;
+
+            if (i < 0) return false;
         } else {
-            j++;
+            ++i;
             
-            if (j > n-1) return false;
+            if (i > left) return false;
         }
+
+        good_j = j;
+        good_i = i;
     }
 
 
     return true;
 }
-
 
 
 int main() {
@@ -44,28 +48,28 @@ int main() {
         cin >> n;
         cin >> m;
 
+        good_j = m-1;
+        good_i = n-1;
+
         string seq;
 
         cin >> seq;
 
-        bool res = dfs(2, 1, seq);
+        bool flag = false;
 
-        if (res)
-            cout << "Good" << endl;
+        forn (i, n) {
+            forn (j, m) {
 
-        // forn (i, m) {
-        //     bool flag = false;
+                if (check(i, j, seq, n-1, m-1)) {
+                    cout << i+1 << " " << j+1 << endl;
+                    flag = true;
+                }
+            }
+        }
 
-        //     forn (j, n) {
-        //         if (dfs(i, j, seq)) {
-        //             cout << i << " " << j << endl;
-        //             flag = true;
-        //             break;
-        //         }
-        //     }
-
-        //     if (flag) break;
-        // }
+        if (!flag) {
+            cout << good_j+1 << " " << good_i+1 << endl;
+        }
     }
 
     return 0;

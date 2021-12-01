@@ -42,7 +42,7 @@ int main() {
 
         cout << 1 << endl;
 
-        cout << count << " > ";
+        cout << count << " ";
         
         forn (i, res_forward.size()) {
             cout << res_forward[i] << " ";

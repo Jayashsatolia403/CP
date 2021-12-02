@@ -21,7 +21,9 @@ int main() {
             hashmap.insert(p(u, v));
         }
 
-        
+        forn (i, n) {
+            
+        }
     }
 
     return 0;

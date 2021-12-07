@@ -1,0 +1,1 @@
+{"name":"Local: max_sum_subarray","url":"/home/jayash/Desktop/CP/CP/CF/Practice Problems/max_sum_subarray.cpp","tests":[{"id":1638886447169,"input":"1\n9\n-2 1 -3 4 -1 2 1 -5 4","output":"4 -1 2 1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/jayash/Desktop/CP/CP/CF/Practice Problems/max_sum_subarray.cpp","group":"local","local":true}

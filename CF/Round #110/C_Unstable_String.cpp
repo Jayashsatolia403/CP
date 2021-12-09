@@ -23,21 +23,24 @@ int n,m,_;
 
 
 
-int is_stable(vector<vector<int>> dp, string s, int i, int j) {
-    if (i > j) return -1;
+int is_stable(vector<vector<int>> dp, string s, int i, int j, char prev) {
+    if (i > j) return 1;
 
-    if (i==j) return 1;
+    if (i==j) {
+        if (s[i] != prev) return 1;
+        if (s[i] == prev) return -1;
+    }
 
     if ((j-i)%2!=0) {
-        if (s[i] != s[j] && s[i] != s[j] != '?') return -1;
+        if (s[i] == s[j] && s[i] != '?' && s[j] != '?') return -1;
     }
     else {
-        if (s[i] == s[j] && s[i] != s[j] != '?') return -1;
+        if (s[i] != s[j] && s[i] != '?' && s[j] != '?') return -1;
     }
 
     if (dp[i][j] != 0) return dp[i][j];
 
-    dp[i][j] = is_stable(dp, s, i+1, j-1);
+    dp[i][j] = is_stable(dp, s, i+1, j-1, s[i]);
 
     return dp[i][j];
 }
@@ -55,15 +58,15 @@ int main() {
         int n = s.length(), count=0;
 
         rep (i, 0, n) {
-            rep (j, i, n) {
-                if (is_stable(vector<VI>(n, VI(n, 0)), s, i, j) == 1) {
+            rep (j, i+1, n) {
+                if (is_stable(vector<VI>(n, VI(n, 0)), s, i, j, s[i]) == 1) {
                     count++;
                 }
             }
         }
 
 
-        cout << count << endl;
+        cout << count+s.length() << endl;
     }
 
     return 0;

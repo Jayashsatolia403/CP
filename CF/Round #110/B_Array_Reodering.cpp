@@ -33,17 +33,21 @@ int main() {
         int n, count=0;
         cin >> n;
 
-        VI a(n, 0);
+        VI a(n, 0), x;
 
         rep (i, 0, n) cin >> a[i];
 
+        rep (i, 0, n) {
+            if (a[i]%2==0) x.pb(a[i]);
+        }
 
-        sort(all(a));
-        reverse(all(a));
+        rep (i, 0, n) {
+            if (a[i]%2!=0) x.pb(a[i]);
+        }
 
         rep (i, 0, n) {
             rep (j, i+1, n) {
-                if (gcd(a[i], 2*a[j]) > 1) count++;
+                if (gcd(x[i], 2*x[j]) > 1) count++;
             }
         }
 

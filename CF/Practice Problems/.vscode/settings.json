@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "ostream": "cpp",
+        "initializer_list": "cpp",
+        "valarray": "cpp",
+        "iostream": "cpp"
+    }
+}

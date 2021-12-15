@@ -30,12 +30,47 @@ void solve() {
 
 
 int main() {
-    int n, m;
-    cin >> n >> m;
+    int t;
+    cin >> t;
 
-    rep (i, 0, n) {
-        
+    while (t--) {
+        int n, k, score = 0;
+        cin >> n >> k;
+
+        VI v(n, 0);
+
+        rep (i, 0, n) {
+            cin >> v[i];
+        }
+
+        sort(all(v));
+
+        VI useful;
+
+        rep (i, n-(2*k), n) {
+            useful.push_back(v[i]);
+        }
+
+        rep (i, 0, n-(2*k)) score += v[i];
+
+        rep (i, 0, k) {
+            score += useful[i]/useful[k+i];
+        }
+
+        // int x = n-(2*k);
+        // int cnt = 1;
+
+        // rep (i, 0, x/2) {
+        //     score += v[n/2+cnt] + v[n/2-cnt];
+        //     cnt++;
+        // }
+
+        // if (x%2 != 0) score += v[n/2];
+
+        cout << score << endl;
     }
+
+    return 0;
 }
 
 

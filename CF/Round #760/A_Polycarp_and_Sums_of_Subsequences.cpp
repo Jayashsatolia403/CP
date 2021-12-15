@@ -30,12 +30,26 @@ void solve() {
 
 
 int main() {
-    int n, m;
-    cin >> n >> m;
+    int t;
+    cin >> t;
 
-    rep (i, 0, n) {
-        
+    while (t--) {
+        VI v(7, 0);
+
+        rep (i, 0, 7) cin >> v[i];
+
+        int m = *max_element(all(v));
+
+        if (v[0] + v[1] + v[2] == m) cout << v[0] << " " << v[1] << " " << v[2];
+        else if (v[0] + v[1] + v[3] == m) cout << v[0] << " " << v[1] << " " << v[3];
+        else if (v[0] + v[2] + v[3] == m) cout << v[0] << " " << v[2] << " " << v[3];
+        else if (v[1] + v[2] + v[3] == m) cout << v[1] << " " << v[2] << " " << v[3];
+        else cout << "Error";
+
+        cout << endl;
     }
+
+    return 0;
 }
 
 

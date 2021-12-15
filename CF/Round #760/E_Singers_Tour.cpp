@@ -30,11 +30,15 @@ void solve() {
 
 
 int main() {
-    int n, m;
-    cin >> n >> m;
+    int t;
+    cin >> t;
 
-    rep (i, 0, n) {
-        
+    while (t--) {
+        int n;
+        cin >> n;
+
+        VI v(n, 0);
+        rep (i, 0, n) cin >> v[i];
     }
 }
 

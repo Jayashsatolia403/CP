@@ -8,8 +8,9 @@ using namespace std;
 #define fi first
 #define se second
 #define SZ(x) ((int)(x).size())
+#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)
 typedef vector<int> VI;
-typedef long long int ll;
+typedef long long ll;
 typedef pair<int,int> PII;
 typedef double db;
 mt19937 mrand(random_device{}()); 
@@ -19,49 +20,28 @@ ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=re
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
 
 const int N=201000;
-int n,m,_;
 
 
-
-void solve() {
-
-}
-
-
+int x, y;
 
 int main() {
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> x >> y >> n;
 
-    vector<string> v(n, "");
+    n = (n-1)%6;
 
-    set<ll> s;
+    int a = 0;
 
-    rep (i, 0, n) cin >> v[i];
-
-
-
-    rep (i, 0, m) {
-        ll highest_marks = 0;
-
-        rep (j, 0, n) {
-
-            ll cur = v[j][i] - '0';
-
-            highest_marks = max(highest_marks, cur);
-        }
-
-        rep (j, 0, n) {
-
-            ll cur = v[j][i] - '0';
-
-            if (cur == highest_marks) {
-                s.insert(j);
-            }
-        }
+    switch(n) {
+        case 0: a=x; break;
+        case 1: a=y; break;
+        case 2: a=y-x; break;
+        case 3: a=-x; break;
+        case 4: a=-y; break;
+        case 5: a=x-y; break;
     }
 
+    cout << (a+mod*2)%mod;
 
-    cout << s.size() << endl;
     return 0;
 }

@@ -3,6 +3,7 @@
         "ostream": "cpp",
         "initializer_list": "cpp",
         "valarray": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "cmath": "cpp"
     }
 }

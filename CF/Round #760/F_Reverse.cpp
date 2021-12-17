@@ -57,13 +57,11 @@ string decimalToBinary(ll n)
 
 bool solve(string s, ll y, int cnt) {
 
-    // cout << "YO" << endl;
+    if (binaryToDecimal(s) == y) {
+        cout << "YES" << endl;
+        exit(0);
+    }
 
-    // cout << binaryToDecimal(s) << " > " << y << endl;
-
-    if (binaryToDecimal(s) == y) return true;
-
-    if (cnt == 22) return false;
 
     string f = s + '0';
     reverse(all(f));

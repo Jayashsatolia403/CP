@@ -8,8 +8,9 @@ using namespace std;
 #define fi first
 #define se second
 #define SZ(x) ((int)(x).size())
+#define foreach(c,itr) for(__typeof((c).begin()) itr=(c).begin();itr!=(c).end();itr++)
 typedef vector<int> VI;
-typedef long long int ll;
+typedef long long ll;
 typedef pair<int,int> PII;
 typedef double db;
 mt19937 mrand(random_device{}()); 
@@ -23,45 +24,16 @@ int n,m,_;
 
 
 
-void solve() {
-
-}
-
-
-
 int main() {
-    int n, m;
-    cin >> n >> m;
+    ll r, a, b, x, y;
+    cin >> r >> a >> b >> x >> y;
 
-    vector<string> v(n, "");
+    ll d2 = (x-a)*(x-a) + (y-b)*(y-b);
+    ll d = sqrt(d2);
 
-    set<ll> s;
+    if (d*d != d2) d++;
 
-    rep (i, 0, n) cin >> v[i];
+    cout << d/(2*r) + (d%(r*2)!=0);
 
-
-
-    rep (i, 0, m) {
-        ll highest_marks = 0;
-
-        rep (j, 0, n) {
-
-            ll cur = v[j][i] - '0';
-
-            highest_marks = max(highest_marks, cur);
-        }
-
-        rep (j, 0, n) {
-
-            ll cur = v[j][i] - '0';
-
-            if (cur == highest_marks) {
-                s.insert(j);
-            }
-        }
-    }
-
-
-    cout << s.size() << endl;
     return 0;
 }

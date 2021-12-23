@@ -31,28 +31,30 @@ int main() {
         int n;
         cin >> n;
 
-        string s;
-        vector<string> v(n-2, "");
-        bool done = false;
+        string s, x="";
+        cin >> s;
 
-        rep (i, 0, n-2) cin >> v[i];
+        VI v(26, 0);
 
+        rep (i, 0, SZ(s)) {
+            v[s[i]-'a']++;
+        }
 
-        cout << v[0][0];
-
-        rep (i, 0, n-3) {
-            if (v[i][1] != v[i+1][0]) {
-                cout << v[i][1] << v[i+1][0];
-                done = true;
+        rep (i, 0, 26) {
+            rep (j, 0, v[i]) {
+                x += 'a' + i;
             }
-            else cout << v[i][1];
         }
 
-        cout << v[n-3][1];
-        if (!done) {
-            cout << "b" << endl;
+        // cout << x << endl;
+
+        int res = 0;
+
+        rep (i, 0, n) {
+            if (s[i] != x[i]) res++;
         }
-        else cout << endl;
+
+        cout << res << endl;
     }
 
     return 0;

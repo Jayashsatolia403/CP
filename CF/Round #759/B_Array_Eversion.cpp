@@ -22,7 +22,6 @@ const int N=201000;
 int n,m,_;
 
 
-
 int main() {
     int t;
     cin >> t;
@@ -31,28 +30,23 @@ int main() {
         int n;
         cin >> n;
 
-        string s;
-        vector<string> v(n-2, "");
-        bool done = false;
+        VI v(n, 0);
+        rep (i, 0, n) cin >> v[i];
 
-        rep (i, 0, n-2) cin >> v[i];
+        int cur=0, res=0, max_val=*max_element(all(v));
 
 
-        cout << v[0][0];
-
-        rep (i, 0, n-3) {
-            if (v[i][1] != v[i+1][0]) {
-                cout << v[i][1] << v[i+1][0];
-                done = true;
+        per (i, 0, n) {
+            if (v[i] == max_val) {
+                break;
             }
-            else cout << v[i][1];
+            if (cur < v[i]) {
+                cur =  v[i];
+                res++;
+            }
         }
 
-        cout << v[n-3][1];
-        if (!done) {
-            cout << "b" << endl;
-        }
-        else cout << endl;
+        cout << res << endl;
     }
 
     return 0;

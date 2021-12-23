@@ -31,28 +31,9 @@ int main() {
         int n;
         cin >> n;
 
-        string s;
-        vector<string> v(n-2, "");
-        bool done = false;
+        VI p(n, 0);
 
-        rep (i, 0, n-2) cin >> v[i];
-
-
-        cout << v[0][0];
-
-        rep (i, 0, n-3) {
-            if (v[i][1] != v[i+1][0]) {
-                cout << v[i][1] << v[i+1][0];
-                done = true;
-            }
-            else cout << v[i][1];
-        }
-
-        cout << v[n-3][1];
-        if (!done) {
-            cout << "b" << endl;
-        }
-        else cout << endl;
+        rep (i, 0, n) cin >> v[i];
     }
 
     return 0;

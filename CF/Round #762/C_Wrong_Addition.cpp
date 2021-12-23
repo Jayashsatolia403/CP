@@ -28,31 +28,43 @@ int main() {
     cin >> t;
 
     while (t--) {
-        int n;
-        cin >> n;
+        int64_t A, S;
+        cin >> A >> S;
+        string B;
 
-        string s;
-        vector<string> v(n-2, "");
         bool done = false;
-
-        rep (i, 0, n-2) cin >> v[i];
-
-
-        cout << v[0][0];
-
-        rep (i, 0, n-3) {
-            if (v[i][1] != v[i+1][0]) {
-                cout << v[i][1] << v[i+1][0];
+    
+        while (S > 0) {
+            int64_t D = A % 10;
+            int64_t SD = S % 10;
+            int64_t BD = (10 + SD - D) % 10;
+    
+            if (D + BD == SD) {
+                B = to_string(BD) + B;
+                A /= 10;
+                S /= 10;
+            } else if (D + BD == S % 100) {
+                B = to_string(BD) + B;
+                A /= 10;
+                S /= 100;
+            } else {
+                cout << -1 << '\n';
                 done = true;
+                break;
             }
-            else cout << v[i][1];
         }
 
-        cout << v[n-3][1];
-        if (!done) {
-            cout << "b" << endl;
+        if (done) continue;
+    
+        if (A != 0) {
+            cout << -1 << '\n';
+            continue;
         }
-        else cout << endl;
+    
+        while (B.size() > 1 && B.front() == '0')
+            B = B.substr(1);
+    
+        cout << B << '\n';
     }
 
     return 0;

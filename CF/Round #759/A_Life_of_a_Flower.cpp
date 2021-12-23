@@ -23,6 +23,8 @@ int n,m,_;
 
 
 
+
+
 int main() {
     int t;
     cin >> t;
@@ -31,28 +33,31 @@ int main() {
         int n;
         cin >> n;
 
-        string s;
-        vector<string> v(n-2, "");
-        bool done = false;
+        VI v(n, 0);
 
-        rep (i, 0, n-2) cin >> v[i];
+        rep (i, 0, n) cin >> v[i];
 
+        int count = 1;
 
-        cout << v[0][0];
+        bool done = false, broken = false;
 
-        rep (i, 0, n-3) {
-            if (v[i][1] != v[i+1][0]) {
-                cout << v[i][1] << v[i+1][0];
-                done = true;
+        rep (i, 0, n) {
+            if (v[i] == 1) {
+                if (i>0 && v[i-1] == 1) count += 5;
+                else count++;
             }
-            else cout << v[i][1];
+            else {
+                if (i > 0 && v[i-1] == 0) {
+                    cout << -1 << endl;
+                    broken = true;
+                    break;
+                }
+            }
         }
 
-        cout << v[n-3][1];
-        if (!done) {
-            cout << "b" << endl;
-        }
-        else cout << endl;
+        if (broken) continue;
+        
+        cout << count << endl;
     }
 
     return 0;

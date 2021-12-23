@@ -28,31 +28,11 @@ int main() {
     cin >> t;
 
     while (t--) {
-        int n;
-        cin >> n;
 
         string s;
-        vector<string> v(n-2, "");
-        bool done = false;
+        cin >> s;
 
-        rep (i, 0, n-2) cin >> v[i];
-
-
-        cout << v[0][0];
-
-        rep (i, 0, n-3) {
-            if (v[i][1] != v[i+1][0]) {
-                cout << v[i][1] << v[i+1][0];
-                done = true;
-            }
-            else cout << v[i][1];
-        }
-
-        cout << v[n-3][1];
-        if (!done) {
-            cout << "b" << endl;
-        }
-        else cout << endl;
+        cout << (count(all(s), 'N') == 1?"NO":"YES") << endl;
     }
 
     return 0;

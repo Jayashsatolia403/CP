@@ -27,7 +27,16 @@ int main() {
     cin >> t;
 
     while (t--) {
+        cin >> n >> m;
         
+        if (n==m) {cout << "YES" << endl; continue; }
+
+
+        if (n==2 && (m == 3)) {cout << "YES" << endl; continue; }
+
+        if ((n <= 3) && (m > n)) { cout << "NO" << endl; continue; }
+
+        cout << "YES" << endl;
     }
 
     return 0;

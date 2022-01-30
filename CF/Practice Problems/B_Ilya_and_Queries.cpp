@@ -23,11 +23,30 @@ int n,m,_;
 
 
 int main() {
-    int t;
-    cin >> t;
+    string s;
+    cin >> s >> m;
 
-    while (t--) {
-        
+    n = s.length();
+
+    vector<int> prefix_sum(n, 0);
+
+    int cur = 0;
+
+    rep (i,0,n-1) {
+        if (s[i] == s[i+1]) cur++;
+        prefix_sum[i+1] = cur;
+    }
+
+    cout << endl;
+
+    while (m--) {
+        int a, b, count = 0;
+        cin >> a >> b;
+
+        a--;
+        b--;
+
+        cout << prefix_sum[b] - prefix_sum[a] << endl;
     }
 
     return 0;

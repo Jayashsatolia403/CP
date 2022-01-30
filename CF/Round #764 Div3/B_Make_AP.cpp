@@ -27,7 +27,19 @@ int main() {
     cin >> t;
 
     while (t--) {
-        
+        ll a, b, c;
+
+        cin >> a >> b >> c;
+
+        bool res = false;
+
+        if ((a+c)%(b*2) == 0) {
+            res = true;
+        }
+        else if ((2*b-c > 0) && (2*b-c)%a == 0) {res = true;}
+        else if ((2*b-a > 0) && (2*b-a)%c == 0) {res = true;}
+
+        res ? cout << "YES" << endl : cout << "NO" << endl;
     }
 
     return 0;

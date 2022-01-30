@@ -23,12 +23,29 @@ int n,m,_;
 
 
 int main() {
-    int t;
-    cin >> t;
+    cin >> n;
+    string s;
+    cin >> s;
 
-    while (t--) {
-        
+    int x=0, X=0, output=0, idx = 0;
+
+    rep (i, 0, n) {
+        s[i] == 'x' ? x++ : X++;
     }
 
+    output = (X-x)/2;
+
+    int i=0;
+
+    cout << abs(output) << endl;
+
+    while (i < n) {
+        if ((s[i] == (output < 0 ? 'x' : 'X')) && idx < abs(output)) {
+            cout << (output > 0 ? "x" : "X");
+            idx++;
+            i++;
+        }
+        else cout << s[i++];
+    }
     return 0;
 }

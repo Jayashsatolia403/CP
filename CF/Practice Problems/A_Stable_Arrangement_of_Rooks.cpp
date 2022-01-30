@@ -27,7 +27,31 @@ int main() {
     cin >> t;
 
     while (t--) {
-        
+        cin >> n >> m;
+
+        bool done = false;
+
+        if (m > n/2+n%2) { cout << -1 << endl; continue; }
+
+        rep (i, 0, n) {
+            rep (j, 0, n) {
+                if (i==j && m > 0) {
+                    if (done) {done = false; cout << "."; continue; }
+                    cout << "R";
+                    done = true;
+                    m--;
+                }
+                else cout << ".";
+            }
+
+            cout << endl;
+        }
+
+        rep (i, 0, n-m) {
+
+        }
+
+        // cout << endl << endl << endl;
     }
 
     return 0;

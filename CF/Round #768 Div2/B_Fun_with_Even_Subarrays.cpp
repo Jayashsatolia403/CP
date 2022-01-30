@@ -27,7 +27,29 @@ int main() {
     cin >> t;
 
     while (t--) {
-        
+        cin >> n;
+
+        VI v(n, 0);
+        rep (i, 0, n) cin >> v[i];
+
+        set<int> s;
+
+        rep (i, 0, n) {
+            s.insert(v[i]);
+        }
+
+        int idx = 0, cnt = s.size();
+
+        if (s.size() == 1) { cout << 0 << endl; continue; }
+
+        while (idx < cnt) {
+            int diff = pow(2, idx);
+            cnt -=  diff;
+            idx++;
+        }
+
+        cout << idx << endl;
+
     }
 
     return 0;

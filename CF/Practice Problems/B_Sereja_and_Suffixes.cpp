@@ -23,11 +23,29 @@ int n,m,_;
 
 
 int main() {
-    int t;
-    cin >> t;
 
-    while (t--) {
-        
+    cin >> n >> m;
+
+    VI v(n, 0);
+    rep (i, 0, n) cin >> v[i];
+
+    set<int> s;
+    VI prefix_sum(n+1, 0);
+    int cnt=0;
+
+    rep (i, 0, n) {
+        if (!s.count(v[i])) { cnt++; s.insert(v[i]); }
+
+        prefix_sum[i+1] = cnt;
+    }
+
+    rep (i, 0, m) {
+        int l;
+        cin >> l;
+        l--;
+
+
+        cout << prefix_sum[prefix_sum.size()-1] - prefix_sum[l] << endl;
     }
 
     return 0;

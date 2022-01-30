@@ -23,12 +23,8 @@ int n,m,_;
 
 
 int main() {
-    int t;
-    cin >> t;
+    cin >> n;
 
-    while (t--) {
-        
-    }
-
+    
     return 0;
 }

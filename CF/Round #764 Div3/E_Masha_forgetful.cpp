@@ -27,6 +27,14 @@ int main() {
     cin >> t;
 
     while (t--) {
+        cin >> n >> m;
+        vector<string> v(n, "");
+
+        string new_num;
+
+        rep (i, 0, n) cin >> v[i];
+        cin >> new_num;
+
         
     }
 

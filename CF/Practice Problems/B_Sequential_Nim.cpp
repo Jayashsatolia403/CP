@@ -27,7 +27,19 @@ int main() {
     cin >> t;
 
     while (t--) {
-        
+        cin >> n;
+        VI v(n, 0);
+
+        rep (i, 0, n) cin >> v[i];
+
+        int k = 0;
+
+        while (k < n && v[k] == 1) k++;
+
+        if ((k%2) ^ (k==n)) {
+            cout << "Second" << endl;
+        }
+        else cout << "First" << endl;
     }
 
     return 0;

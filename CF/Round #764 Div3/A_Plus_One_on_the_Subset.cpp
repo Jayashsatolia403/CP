@@ -27,7 +27,22 @@ int main() {
     cin >> t;
 
     while (t--) {
-        
+        cin >> n;
+
+        int mx = 0, mn = INT_MAX;
+
+        rep (i, 0, n) {
+            cin >> m;
+
+            if (m > mx) {
+                mx = m;
+            }
+            if (m < mn) {
+                mn = m;
+            }
+        }
+
+        cout << mx - mn << endl;
     }
 
     return 0;

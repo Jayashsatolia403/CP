@@ -21,31 +21,28 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
 const int N=201000;
 int n,m,_;
 
+bool check(ll hc, ll dc, ll hm, ll dm) {
+    return (hc-1)/dm >= (hm-1)/dc;
+}
+
 
 int main() {
+    int t;
+    cin >> t;
 
-    cin >> n >> m;
+    while (t--) {
+        ll hc, dc, hm, dm, k, w, a;
 
-    VI v(n, 0);
-    rep (i, 0, n) cin >> v[i];
+        cin >> hc >> dc >> hm >> dm >> k >> w >> a;
 
-    set<int> s;
-    VI prefix_sum(n, 0);
-    int cnt=0;
+        bool done = false;
 
-    per (i, 0, n) {
-        if (!s.count(v[i])) { cnt++; s.insert(v[i]); }
+        rep (i, 0, k+1) {
+            if (check(hc+(a*i), dc+w*(k-i), hm, dm)) {done = true; break;}
+        }
 
-        prefix_sum[i] = cnt;
-    }
-
-    rep (i, 0, m) {
-        int l;
-        cin >> l;
-        l--;
-
-
-        cout << prefix_sum[l] << endl;
+        if (!done) cout << "NO" << endl;
+        else cout << "YES" << endl;
     }
 
     return 0;

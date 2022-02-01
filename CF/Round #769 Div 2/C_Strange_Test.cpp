@@ -23,29 +23,22 @@ int n,m,_;
 
 
 int main() {
+    int t;
+    cin >> t;
 
-    cin >> n >> m;
+    while (t--) {
+        cin >> n >> m;
 
-    VI v(n, 0);
-    rep (i, 0, n) cin >> v[i];
+        int cnt = 0;
 
-    set<int> s;
-    VI prefix_sum(n, 0);
-    int cnt=0;
+        while ((n|m) <= m) {
+            n = n | m;
+            cnt++;
 
-    per (i, 0, n) {
-        if (!s.count(v[i])) { cnt++; s.insert(v[i]); }
+            if (n == m) break;
+        }
 
-        prefix_sum[i] = cnt;
-    }
-
-    rep (i, 0, m) {
-        int l;
-        cin >> l;
-        l--;
-
-
-        cout << prefix_sum[l] << endl;
+        cout << min((m-n + cnt), ((n|m)-m + cnt)) << endl;
     }
 
     return 0;

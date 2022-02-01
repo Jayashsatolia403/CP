@@ -19,34 +19,37 @@ ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=re
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
  
 const int N=201000;
-int n,m,_;
+int n,m,k;
 
 
 int main() {
 
-    cin >> n >> m;
+    cin >> n >> m >> k;
 
-    VI v(n, 0);
-    rep (i, 0, n) cin >> v[i];
+    int res = 0;
 
-    set<int> s;
-    VI prefix_sum(n, 0);
-    int cnt=0;
+    VI v(m+1, 0);
 
-    per (i, 0, n) {
-        if (!s.count(v[i])) { cnt++; s.insert(v[i]); }
+    rep (i, 0, m+1) cin >> v[i];
 
-        prefix_sum[i] = cnt;
-    }
+    string s = bitset<64>(v[m]).to_string();
+
 
     rep (i, 0, m) {
-        int l;
-        cin >> l;
-        l--;
+        string x = bitset<64>(v[i]).to_string();
 
+        bool done = false;
+        int cnt = k;
 
-        cout << prefix_sum[l] << endl;
+        rep (j, 0, 64) {
+            if (cnt < 0) { done = true; break; }
+            if (x[j] != s[j]) cnt--;
+        }
+
+        if (!done && cnt >= 0) res++;
     }
+
+    cout << res << endl;
 
     return 0;
 }

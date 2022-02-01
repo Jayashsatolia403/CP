@@ -23,30 +23,32 @@ int n,m,_;
 
 
 int main() {
+    cin >> n;
+    vector<ll> v(n, 0);
 
-    cin >> n >> m;
-
-    VI v(n, 0);
     rep (i, 0, n) cin >> v[i];
 
-    set<int> s;
-    VI prefix_sum(n, 0);
-    int cnt=0;
+    sort(all(v));
 
-    per (i, 0, n) {
-        if (!s.count(v[i])) { cnt++; s.insert(v[i]); }
+    bool correct = true;
 
-        prefix_sum[i] = cnt;
+    if(v[n-1]>=v[n-2]+v[n-3]) correct = false;
+    
+
+    cout << (correct ? "YES" : "NO") << endl;
+
+    
+    if (correct) {
+        cout << v[n-2] << " ";
+        rep (i, 0, n-2) cout << v[i] << " ";
+        cout << v[n-1];
     }
-
-    rep (i, 0, m) {
-        int l;
-        cin >> l;
-        l--;
-
-
-        cout << prefix_sum[l] << endl;
-    }
+    
 
     return 0;
 }
+
+
+// Logic : Sort the array. then we can observe that numbers in the middle will always be less than their neighbors. so we just check 
+//         if last number is greater than n-1 + n-2 th then we can say arrange them in such a way that nth number stays in middle of 
+//         n-1 and n-2 or else print NO.

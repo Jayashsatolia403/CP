@@ -19,33 +19,17 @@ ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=re
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
  
 const int N=201000;
-int n,m,_;
+int64_t n,m,_;
 
 
 int main() {
+    int t;
+    cin >> t;
 
-    cin >> n >> m;
+    while (t--) {
+        cin >> n >> m;
 
-    VI v(n, 0);
-    rep (i, 0, n) cin >> v[i];
-
-    set<int> s;
-    VI prefix_sum(n, 0);
-    int cnt=0;
-
-    per (i, 0, n) {
-        if (!s.count(v[i])) { cnt++; s.insert(v[i]); }
-
-        prefix_sum[i] = cnt;
-    }
-
-    rep (i, 0, m) {
-        int l;
-        cin >> l;
-        l--;
-
-
-        cout << prefix_sum[l] << endl;
+        cout << (n % 2 == m % 2 && n >= m * m ? "YES" : "NO") << endl;
     }
 
     return 0;

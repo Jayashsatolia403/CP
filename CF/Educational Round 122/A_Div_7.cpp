@@ -22,30 +22,20 @@ const int N=201000;
 int n,m,_;
 
 
+
 int main() {
+    int t;
+    cin >> t;
 
-    cin >> n >> m;
+    while (t--) {
+        cin >> n;
 
-    VI v(n, 0);
-    rep (i, 0, n) cin >> v[i];
+        if (n%7 == 0) {cout << n << endl; continue;}
 
-    set<int> s;
-    VI prefix_sum(n, 0);
-    int cnt=0;
+        m = 7 - n % 7;
 
-    per (i, 0, n) {
-        if (!s.count(v[i])) { cnt++; s.insert(v[i]); }
-
-        prefix_sum[i] = cnt;
-    }
-
-    rep (i, 0, m) {
-        int l;
-        cin >> l;
-        l--;
-
-
-        cout << prefix_sum[l] << endl;
+        if ((n+m)%10 < n%10) cout << n - n%7 << endl;
+        else cout << n+m << endl;
     }
 
     return 0;

@@ -28,20 +28,36 @@ int main() {
 
     while (t--) {
         cin >> n;
+        VI v(n, 0);
 
-        int cnt = 1, steps = 0;
+        rep (i, 0, n) cin >> v[i];
 
-        int x = n;
+        auto max_v = max_element(all(v));
+        auto min_v = min_element(all(v));
 
-        while (x > 0) {
-            x -= cnt++;
-            steps++;
+        if (*max_v == *min_v) { cout << "NO" << endl; continue; }
+        else { cout << "YES" << endl; }
+
+        map<int, VI> m;
+
+        rep (i, 0, n) m[v[i]].pb(i);
+
+        int minv = *min_v;
+        int maxv = *max_v;
+        int first_idx = m[minv][0];
+
+        for (auto& it : m) {
+            if (it.fi == minv) continue;
+            
+            for (int i : m[it.fi]) {
+                cout << first_idx + 1 << " " << i + 1 << endl;
+            }
         }
-        
-        if (x == -1) steps++;
-        
 
-        cout << steps << endl;
+        for (int i : m[minv]) {
+            if (i == first_idx) continue;
+            cout << m[maxv][0] + 1 << " " << i + 1 << endl;
+        }
     }
 
     return 0;

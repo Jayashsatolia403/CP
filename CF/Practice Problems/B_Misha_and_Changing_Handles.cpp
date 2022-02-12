@@ -9,7 +9,7 @@ using namespace std;
 #define se second
 #define SZ(x) ((int)(x).size())
 typedef vector<int> VI;
-typedef long long int ll;
+typedef long long ll;
 typedef pair<int,int> PII;
 typedef double db;
 mt19937 mrand(random_device{}()); 
@@ -17,47 +17,37 @@ const ll mod=1000000007;
 int rnd(int x) { return mrand() % x;}
 ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
-
+    
 const int N=201000;
 int n,m,_;
-
-
-
-
-
+    
+    
 int main() {
-    int n, m;
-    cin >> n >> m;
+    cin >> n;
 
-    vector<string> v(n, "");
+    map<string, string> m;
 
-    set<ll> s;
+    rep (i, 0, n) {
+        string s1, s2;
 
-    rep (i, 0, n) cin >> v[i];
+        cin >> s1 >> s2;
 
+        m[s1] = s2;
+    }
 
-
-    rep (i, 0, m) {
-        ll highest_marks = 0;
-
-        rep (j, 0, n) {
-
-            ll cur = v[j][i] - '0';
-
-            highest_marks = max(highest_marks, cur);
-        }
-
-        rep (j, 0, n) {
-
-            ll cur = v[j][i] - '0';
-
-            if (cur == highest_marks) {
-                s.insert(j);
-            }
+    for (auto& it : m) {
+        while (m.count(it.se)) {
+            string s = it.se;
+            it.se = m[it.se];
+            m.erase(s);
         }
     }
 
+    cout << m.size() << endl;
 
-    cout << s.size() << endl;
+    for (auto& it : m) {
+        cout << it.fi << " " << it.se << endl;
+    }
+    
     return 0;
 }

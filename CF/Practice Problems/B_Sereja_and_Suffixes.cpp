@@ -23,7 +23,6 @@ int n,m,_;
 
 
 int main() {
-
     cin >> n >> m;
 
     VI v(n, 0);

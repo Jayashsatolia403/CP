@@ -22,6 +22,7 @@ const int N=201000;
 int n,m,k;
 
 
+
 int main() {
 
     cin >> n >> m >> k;

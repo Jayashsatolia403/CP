@@ -9,7 +9,7 @@ using namespace std;
 #define se second
 #define SZ(x) ((int)(x).size())
 typedef vector<int> VI;
-typedef long long int ll;
+typedef long long ll;
 typedef pair<int,int> PII;
 typedef double db;
 mt19937 mrand(random_device{}()); 
@@ -17,47 +17,33 @@ const ll mod=1000000007;
 int rnd(int x) { return mrand() % x;}
 ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
-
+    
 const int N=201000;
 int n,m,_;
 
 
-
-
-
+    
 int main() {
-    int n, m;
-    cin >> n >> m;
+    int t;
+    cin >> t;
+    
+    while (t--) {
+        cin >> n >> m;
+        string s, rev;
+        cin >> s;
 
-    vector<string> v(n, "");
+        if (m == 0) {cout << 1 << endl; continue; }
 
-    set<ll> s;
+        rev = s;
+        reverse(all(s));
 
-    rep (i, 0, n) cin >> v[i];
-
-
-
-    rep (i, 0, m) {
-        ll highest_marks = 0;
-
-        rep (j, 0, n) {
-
-            ll cur = v[j][i] - '0';
-
-            highest_marks = max(highest_marks, cur);
-        }
-
-        rep (j, 0, n) {
-
-            ll cur = v[j][i] - '0';
-
-            if (cur == highest_marks) {
-                s.insert(j);
-            }
-        }
+        cout << (rev == s ? 1 : 2) << endl;
     }
-
-
-    cout << s.size() << endl;
+    
     return 0;
 }
+
+
+
+// Idea is that if we add reverse of the string to the string, we get palindrome. 
+// So if string is palindrome then 1 else 2. after first operation it will be palindrome anyways.

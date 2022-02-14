@@ -25,15 +25,24 @@ int n,m,_;
 int main() {
     cin >> n >> m;
 
-    VI w(n, 0), v(n, 0);
+    if (n >= m) {
+        rep (i, 0, m) {
+            cout << "BG";
+        }
 
-    rep (i, 0, n) {
-        cin >> w[i] >> v[i];
+        rep (i, m, n) {
+            cout << "B";
+        }
+    }
+    else {
+        rep (i, 0, n) {
+            cout << "GB";
+        }
+
+        rep (i, n, m) {
+            cout << "G";
+        }
     }
 
-    
-    
     return 0;
 }
-
-

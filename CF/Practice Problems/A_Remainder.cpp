@@ -23,17 +23,20 @@ int n,m,_;
     
     
 int main() {
-    cin >> n >> m;
+    int x, y;
+    cin >> n >> x >> y;
 
-    VI w(n, 0), v(n, 0);
+    string nums;
+    cin >> nums;
 
-    rep (i, 0, n) {
-        cin >> w[i] >> v[i];
+    int count = 0;
+
+    rep (i, n-x, n) {
+        if (i == n-y-1 && nums[i] != '1') count++;
+        else if (i != n-y-1 && nums[i] == '1') count++;
     }
 
-    
-    
+    cout << count << endl;
+
     return 0;
 }
-
-

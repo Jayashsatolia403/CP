@@ -24,16 +24,21 @@ int n,m,_;
     
 int main() {
     cin >> n >> m;
-
-    VI w(n, 0), v(n, 0);
-
-    rep (i, 0, n) {
-        cin >> w[i] >> v[i];
-    }
-
+    vector<string> p(n, ""), q(m, "");
     
-    
+    rep(i, 0, n) cin >> p[i];
+    rep(i, 0, m) cin >> q[i];
+
+    set<string> commons, set_q;
+
+    rep (i, 0, m) set_q.insert(q[i]);
+
+    rep (i, 0, n) if (set_q.count(p[i])) commons.insert(p[i]);
+
+    n += commons.size()%2;
+
+
+    cout << (n > m ? "YES" : "NO") << endl;
+
     return 0;
 }
-
-

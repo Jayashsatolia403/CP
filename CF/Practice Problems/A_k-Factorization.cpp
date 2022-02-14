@@ -25,15 +25,27 @@ int n,m,_;
 int main() {
     cin >> n >> m;
 
-    VI w(n, 0), v(n, 0);
+    m--;
 
-    rep (i, 0, n) {
-        cin >> w[i] >> v[i];
+    VI v;
+
+    rep (i, 2, 10000) {
+        while (n % i == 0) {
+            if (m <= 0) break;
+            v.pb(i);
+            n /= i;
+            m--;
+        }
     }
 
-    
-    
+
+    if (m > 0 || n == 1) cout << -1 << endl;
+    else {
+        v.pb(n);
+        rep (i, 0, SZ(v)) {
+            cout << v[i] << " ";
+        }
+    }
+
     return 0;
 }
-
-

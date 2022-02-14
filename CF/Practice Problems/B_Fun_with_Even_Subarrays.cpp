@@ -23,17 +23,30 @@ int n,m,_;
     
     
 int main() {
-    cin >> n >> m;
-
-    VI w(n, 0), v(n, 0);
-
-    rep (i, 0, n) {
-        cin >> w[i] >> v[i];
-    }
-
+    int t;
+    cin >> t;
     
+    while (t--) {
+        cin >> n;
+        VI v(n, 0);
+        rep (i, 0, n) cin >> v[i];
+
+        int count = 1, count_after = 0, result=0;
+        bool done = false;
+
+        per (i, 0, n-1) {
+            if (v[i] == v[n-1] && !done) count++;
+            else if (v[i] != v[n-1]) count_after++;
+            else done = true;
+        }
+
+        while (count < n) {
+            result++;
+            count *= 2;
+        }
+
+        cout << result << endl;
+    }
     
     return 0;
 }
-
-

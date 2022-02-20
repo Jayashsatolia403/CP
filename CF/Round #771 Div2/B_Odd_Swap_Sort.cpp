@@ -17,40 +17,40 @@ const ll mod=1000000007;
 int rnd(int x) { return mrand() % x;}
 ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
-
+    
 const int N=201000;
 int n,m,_;
+    
 
 
+bool is_sorted(VI v) {
+	bool good = true;
 
+	rep (i, 0, SZ(v)-1) {
+		if (v[i] > v[i+1]) { good = false; break; }
+	}
+
+	return good;
+}
 
 
 int main() {
-    int t, n, count=0;
+    int t;
     cin >> t;
-    n = t;
-
-    vector<VI> v;
-
+    
     while (t--) {
-        int h, a;
-        cin >> h >> a;
+        cin >> n;
+        VI v(n, 0), evens, odds;
+        
+        rep (i, 0, n) cin >> v[i];
+        
+        for (int i: v) { (i & 1) ? odds.pb(i) : evens.pb(i); }
 
-        v.push_back({h, a});
+
+        (is_sorted(evens) && is_sorted(odds)) ? cout << "YES" << endl : cout << "NO" << endl;
+        
     }
-
-    rep (i, 0, n) {
-        rep (j, i+1, n) {
-            if ((v[i][1] == v[j][0] && v[i][0] == v[j][1])) {
-                count += 2;
-            }
-            else if ((v[i][1] == v[j][0] || v[i][0] == v[j][1])) {
-                count++;
-            }
-        }
-    }
-
-    cout << count;
+    
+    return 0;
 }
-
 

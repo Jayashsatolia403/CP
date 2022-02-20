@@ -17,40 +17,32 @@ const ll mod=1000000007;
 int rnd(int x) { return mrand() % x;}
 ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
-
+    
 const int N=201000;
 int n,m,_;
-
-
-
-
-
+    
+    
 int main() {
-    int t, n, count=0;
+    int t;
     cin >> t;
-    n = t;
+    
+    rep (i, 0, t) {
+        string s;
+        cin >> s;
 
-    vector<VI> v;
+        set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
 
-    while (t--) {
-        int h, a;
-        cin >> h >> a;
+        int n = s.length();
+        string result = "";
 
-        v.push_back({h, a});
-    }
-
-    rep (i, 0, n) {
-        rep (j, i+1, n) {
-            if ((v[i][1] == v[j][0] && v[i][0] == v[j][1])) {
-                count += 2;
-            }
-            else if ((v[i][1] == v[j][0] || v[i][0] == v[j][1])) {
-                count++;
-            }
+        if (vowels.find(s[n-1]) != vowels.end()) {
+            result = "Alice";
         }
+        else if (s[n-1] != 'y' && s[n-1] != 'Y') result = "Bob";
+        else result = "nobody";
+
+        cout << "Case #" << i+1 << ": " << s << " is ruled by " << result << "." << endl;
     }
-
-    cout << count;
+    
+    return 0;
 }
-
-

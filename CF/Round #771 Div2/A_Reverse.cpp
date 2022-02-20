@@ -10,6 +10,7 @@ using namespace std;
 #define SZ(x) ((int)(x).size())
 typedef vector<int> VI;
 typedef long long ll;
+
 typedef pair<int,int> PII;
 typedef double db;
 mt19937 mrand(random_device{}()); 
@@ -17,40 +18,36 @@ const ll mod=1000000007;
 int rnd(int x) { return mrand() % x;}
 ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
-
+    
 const int N=201000;
 int n,m,_;
 
-
-
-
-
+    
+    
 int main() {
-    int t, n, count=0;
+    int t;
     cin >> t;
-    n = t;
-
-    vector<VI> v;
-
+    
     while (t--) {
-        int h, a;
-        cin >> h >> a;
+        cin >> n;
+        
+        int v[n];
+        rep (i, 0, n) cin >> v[i];
+        
+        int x = 0, y = 0; 
+        
+        while (x < n-1 && v[x] == x+1) x++;
 
-        v.push_back({h, a});
+        y = x;
+
+        while (v[y] != x+1) y++;
+        y++;
+
+        reverse(v+x, v+y);
+
+        rep (i, 0, n) cout << v[i] << " ";
+        cout << endl; 
     }
-
-    rep (i, 0, n) {
-        rep (j, i+1, n) {
-            if ((v[i][1] == v[j][0] && v[i][0] == v[j][1])) {
-                count += 2;
-            }
-            else if ((v[i][1] == v[j][0] || v[i][0] == v[j][1])) {
-                count++;
-            }
-        }
-    }
-
-    cout << count;
+    
+    return 0;
 }
-
-

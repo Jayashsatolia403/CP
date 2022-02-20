@@ -17,40 +17,26 @@ const ll mod=1000000007;
 int rnd(int x) { return mrand() % x;}
 ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=res*a%mod;a=a*a%mod;}return res;}
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
-
+    
 const int N=201000;
 int n,m,_;
-
-
-
-
-
+    
+    
 int main() {
-    int t, n, count=0;
+    int t;
     cin >> t;
-    n = t;
+    
+    rep (i,0,t){
+        cin >> n >> m;
+        vector<int> a(n);
+        rep(i,0,n) cin >> a[i];
 
-    vector<VI> v;
+        int sum=0;
 
-    while (t--) {
-        int h, a;
-        cin >> h >> a;
+        rep (i, 0, n) sum += a[i];
 
-        v.push_back({h, a});
+        cout << "Case #" << i+1 << ": " << sum%m << endl;
     }
-
-    rep (i, 0, n) {
-        rep (j, i+1, n) {
-            if ((v[i][1] == v[j][0] && v[i][0] == v[j][1])) {
-                count += 2;
-            }
-            else if ((v[i][1] == v[j][0] || v[i][0] == v[j][1])) {
-                count++;
-            }
-        }
-    }
-
-    cout << count;
+    
+    return 0;
 }
-
-

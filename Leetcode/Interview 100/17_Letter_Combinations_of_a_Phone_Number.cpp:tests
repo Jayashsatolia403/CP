@@ -1,0 +1,30 @@
+[
+	{
+		"correct_answers":
+		[
+			"ad\nae\naf\nbd\nbe\nbf\ncd\nce\ncf"
+		],
+		"test": "23\n"
+	},
+	{
+		"correct_answers":
+		[
+			"adg\nadh\nadi\naeg\naeh\naei\nafg\nafh\nafi\nbdg\nbdh\nbdi\nbeg\nbeh\nbei\nbfg\nbfh\nbfi\ncdg\ncdh\ncdi\nceg\nceh\ncei\ncfg\ncfh\ncfi"
+		],
+		"test": "234\n"
+	},
+	{
+		"correct_answers":
+		[
+			"gda\ngdb\ngdc\ngea\ngeb\ngec\ngfa\ngfb\ngfc\nhda\nhdb\nhdc\nhea\nheb\nhec\nhfa\nhfb\nhfc\nida\nidb\nidc\niea\nieb\niec\nifa\nifb\nifc"
+		],
+		"test": "432\n"
+	},
+	{
+		"correct_answers":
+		[
+			"agj\nagk\nagl\nahj\nahk\nahl\naij\naik\nail\nbgj\nbgk\nbgl\nbhj\nbhk\nbhl\nbij\nbik\nbil\ncgj\ncgk\ncgl\nchj\nchk\nchl\ncij\ncik\ncil"
+		],
+		"test": "245\n"
+	}
+]

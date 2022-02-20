@@ -1,0 +1,64 @@
+[
+	{
+		"correct_answers":
+		[
+			"123"
+		],
+		"test": "123\n"
+	},
+	{
+		"correct_answers":
+		[
+			"2147483647"
+		],
+		"test": "4625342786\n"
+	},
+	{
+		"correct_answers":
+		[
+			"453785"
+		],
+		"test": "453785\n"
+	},
+	{
+		"correct_answers":
+		[
+			"-432842"
+		],
+		"test": "-432842\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1930"
+		],
+		"test": "1930 with words\n"
+	},
+	{
+		"correct_answers":
+		[
+			"0"
+		],
+		"test": "words with 1930\n"
+	},
+	{
+		"correct_answers":
+		[
+			"-2147483648"
+		],
+		"test": "-91283472332\n"
+	},
+	{
+		"correct_answers":
+		[
+			"0"
+		],
+		"test": "+-12\n"
+	},
+	{
+		"test": "000-42\n"
+	},
+	{
+		"test": "234-43235\n"
+	}
+]

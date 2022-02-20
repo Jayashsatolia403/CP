@@ -1,0 +1,14 @@
+[
+	{
+		"test": "aa\na\n"
+	},
+	{
+		"test": "aa\n*\n"
+	},
+	{
+		"test": "cb\n?a\n"
+	},
+	{
+		"test": "adceb\n*a*b\n"
+	}
+]

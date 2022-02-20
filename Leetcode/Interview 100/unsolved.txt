@@ -6,3 +6,6 @@
 29_Divide_Two_Integers.cpp
 33_Search_in_Rotated_Sorted_Array.cpp
 36_Valid_Sudoku.cpp
+42_Trapping_Rain_Water.cpp
+44_Wildcard_Matching.cpp
+46_Permutations.cpp

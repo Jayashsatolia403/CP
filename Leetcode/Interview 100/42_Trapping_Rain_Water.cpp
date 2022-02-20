@@ -6,19 +6,32 @@ using namespace std;
 class Solution {
 public:
     int trap(vector<int>& v) {
-        int n = v.size(), result = 0, progress=0, backup=0;
+        int n = v.size(), prev = 0, result = 0;
 
-        int start=0;
+        vector<int> left(n, 0), right(n, 0);
 
-        for (int end=1; end < n; end++) {
-        	if (v[end] > v[end-1] && v[end-1] != 0) if (end-1 != start || v[end-1] != 0) backup += v[end]-v[end-1];
-
-        	if (v[start] == 0) start++;
-        	else if (v[start] <= v[end]) { result += progress; start = end; backup = 0; progress = 0; }
-        	else progress += v[start]-v[end];
+        for (int i=0; i < n; i++) {
+        	left[i] = max(prev, v[i]);
+        	prev = left[i];
         }
 
-        return result + backup;
+        prev = 0;
+
+        for (int i=n-1; i >= 0; i--) {
+        	right[i] = max(prev, v[i]);
+        	prev = right[i];
+        }
+
+        // for (int i=0; i < n; i++) cout << left[i] << " > " << right[i] << endl;
+
+        for (int i=0; i < n; i++) {
+        	int x = min(left[i], right[i]) - v[i];
+
+        	if (x > 0) result += x;
+        }
+
+
+        return result;
     }
 };
 

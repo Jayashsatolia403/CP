@@ -9,3 +9,5 @@
 42_Trapping_Rain_Water.cpp
 44_Wildcard_Matching.cpp
 46_Permutations.cpp
+54_Spiral_Matrix.cpp
+47_Permutations_II.cpp

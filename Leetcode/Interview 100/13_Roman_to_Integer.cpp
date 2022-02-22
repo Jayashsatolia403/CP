@@ -39,4 +39,5 @@ int main() {
 	cin >> s;
 
 	cout << Solution().romanToInt(s) << endl;
+
 }

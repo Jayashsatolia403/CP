@@ -1,3 +1,6 @@
+from fileinput import filename
+
+
 files = ["a_an_example.in.txt", "b_basic.in.txt", "c_coarse.in.txt", "d_difficult.in.txt", "e_elaborate.in.txt"]
 
 for file_name in files:
@@ -85,6 +88,15 @@ for file_name in files:
         if i:
             corrects += 1
     
-    print(corrects)
+    output_file_name = "output/" + file_name[:-6] + "out"
+    file = open(output_file_name, 'w')
+
+    file.write(str(len(good_ingrediants))+" ")
+    
+    for i in good_ingrediants:
+        file.write(i+" ")
+
+
+    # print(corrects)
 
     # print([i for i in good_ingrediants])

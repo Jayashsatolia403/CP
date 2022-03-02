@@ -20,34 +20,36 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-#include <bits/stdc++.h>
-using namespace std;
-
+    
+    
 int main() {
-    cout << "Hello World!" << endl;
+    int t;
+    cin >> t;
+    
+    while (t--) {
+        cin >> n >> m;
+        VI v(n, 0);
+        rep (i, 0, n) cin >> v[i];
 
-    return 0;
-}
+        rep (i, 0, m+1) {
+            int left=0, right=0, sum=0, result=INT_MIN;
 
+            while (right < m) {
+                sum += v[right++];
+            }
 
+            while (right < n) {
+                result = max(result, sum);
+                sum -= v[left++];
+                sum += v[right++];
+            }
 
-int main() {
-    string s;
-    cin >> s >> n;
+            result = max(result, sum);
 
-    int len = s.size();
-
-    vector<VI> v(len/n+1);
-
-    int i=0;
-
-    if (i == 0) {
-        while (i < n) {
-            v[i].pb(s[i]);
-            i++;
+            cout << result << " ";
         }
+
+        cout << endl;
     }
     
     return 0;

@@ -20,34 +20,37 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-#include <bits/stdc++.h>
-using namespace std;
-
+    
+    
 int main() {
-    cout << "Hello World!" << endl;
+    int t;
+    cin >> t;
+    
+    while (t--) {
+        string s;
+        cin >> s;
 
-    return 0;
-}
+        set<char> check;
 
+        map<char,char> m = {
+            {'R', 'r'},
+            {'G', 'g'},
+            {'B', 'b'}
+        };
 
+        bool result = true;
 
-int main() {
-    string s;
-    cin >> s >> n;
-
-    int len = s.size();
-
-    vector<VI> v(len/n+1);
-
-    int i=0;
-
-    if (i == 0) {
-        while (i < n) {
-            v[i].pb(s[i]);
-            i++;
+        for (char c: s) {
+            if (m.find(c) == m.end()) {
+                check.insert(c);
+            }
+            else {
+                if (check.find(m[c]) == check.end())  { result = false; }
+                else check.erase(m[c]);
+            }
         }
+
+        cout << (result ? "YES" : "NO") << endl;
     }
     
     return 0;

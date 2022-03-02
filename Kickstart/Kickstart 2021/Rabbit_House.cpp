@@ -22,32 +22,15 @@ const int N=201000;
 int n,m,_;
 
 
-#include <bits/stdc++.h>
-using namespace std;
 
+    
+    
 int main() {
-    cout << "Hello World!" << endl;
-
-    return 0;
-}
-
-
-
-int main() {
-    string s;
-    cin >> s >> n;
-
-    int len = s.size();
-
-    vector<VI> v(len/n+1);
-
-    int i=0;
-
-    if (i == 0) {
-        while (i < n) {
-            v[i].pb(s[i]);
-            i++;
-        }
+    int t;
+    cin >> t;
+    
+    while (t--) {
+        
     }
     
     return 0;

@@ -20,34 +20,26 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-#include <bits/stdc++.h>
-using namespace std;
-
+    
+    
 int main() {
-    cout << "Hello World!" << endl;
+    int t;
+    cin >> t;
+    
+    rep(_, 1, t+1) {
+        cin >> n >> m;
+        string s;
+        cin >> s;
 
-    return 0;
-}
+        int goodness = 0;
 
-
-
-int main() {
-    string s;
-    cin >> s >> n;
-
-    int len = s.size();
-
-    vector<VI> v(len/n+1);
-
-    int i=0;
-
-    if (i == 0) {
-        while (i < n) {
-            v[i].pb(s[i]);
-            i++;
+        rep (i, 0, n/2) {
+            if (s[i] != s[n-i-1]) {
+                goodness++;
+            }
         }
+
+        cout << "Case #" << _ << ": " << abs(goodness-m) << endl;
     }
     
     return 0;

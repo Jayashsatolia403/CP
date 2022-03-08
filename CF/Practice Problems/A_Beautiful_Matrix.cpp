@@ -23,11 +23,6 @@ int n,m,_;
 
 
 
-void solve() {
-
-}
-
-
 
 int main() {
     vector<VI> v(5, VI(5, 0));

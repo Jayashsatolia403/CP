@@ -11,3 +11,6 @@
 46_Permutations.cpp
 54_Spiral_Matrix.cpp
 47_Permutations_II.cpp
+91_Decode_Ways.cpp
+124_Binary_Tree_Maximum_Path_Sum.cpp
+127_Word_Ladder.cpp

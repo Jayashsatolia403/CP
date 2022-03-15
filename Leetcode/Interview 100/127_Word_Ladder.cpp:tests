@@ -1,0 +1,8 @@
+[
+	{
+		"test": "hit\ncog\n6\nhot dot dog lot log cog\n"
+	},
+	{
+		"test": "a\nc\n3\na b c\n"
+	}
+]

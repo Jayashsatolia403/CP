@@ -16,3 +16,6 @@
 127_Word_Ladder.cpp
 136. Single Number
 138. Copy List with Random Pointer
+139_Word_Break.cpp
+149_Max_Points_on_a_Line.cpp
+152_Maximum_Product_Subarray.cpp

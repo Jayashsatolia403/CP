@@ -1,0 +1,11 @@
+[
+	{
+		"test": "leetcode\n2\nleet\ncode\n"
+	},
+	{
+		"test": "applepenapple\n2\napple\npen\n"
+	},
+	{
+		"test": "hi\n1\nb\n"
+	}
+]

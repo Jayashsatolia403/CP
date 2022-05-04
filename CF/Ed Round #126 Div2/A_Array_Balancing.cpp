@@ -27,11 +27,6 @@ int main() {
     cin >> t;
     
     while (t--) {
-        cin >> n;
-        VI a(n, 0), b(n, 0);
-        rep(i, 0, n) cin >> a[i]; 
-        rep(i, 0, n) cin >> b[i];
-
         
     }
     

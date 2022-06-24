@@ -20,21 +20,32 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+        cin >> n;
+        ll a[n];
+        rep(i,0,n) cin >> a[i];
 
+        ll mx=LLONG_MIN, sm=0;
+        bool done = false;
 
+        rep (i, 0, n) {
+            sm += a[i];
+            mx = max(mx, a[i]);
+
+            if (mx < sm) {
+                done = true;
+                break;
+            }
+        }
+        
+        if (done) cout << "NO" << endl;
+        else cout << "YES" << endl;
     }
     
     return 0;

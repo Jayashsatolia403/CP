@@ -1,0 +1,17 @@
+[
+	{
+		"test": "abcdef\ndf\n"
+	},
+	{
+		"test": "abcdef\nbcd\n"
+	},
+	{
+		"test": "abcdef\naef\n"
+	},
+	{
+		"test": "aabcdef\naef\n"
+	},
+	{
+		"test": "ADOBECODEBANC\nABC\n"
+	}
+]

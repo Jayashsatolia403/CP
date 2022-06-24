@@ -20,21 +20,35 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+        
+        vector<vector<char>> board(8, vector<char>(8, '.'));
+        rep(i, 0, 8) {
+            rep(j, 0, 8) {
+                cin >> board[i][j];
+            }
+        }
 
+        int a =0, b=0;
 
+        rep (i, 0, 8) {
+            rep (j, 0, 8) {
+                if (board[i][j] == '#' && i > 0 && j > 0 && i < 7 && j < 7) {
+                    if (board[i+1][j-1] == '#' && board[i-1][j-1] == '#') {
+                        a = i+1;
+                        b = j+1;
+                    }
+                }
+            }
+        }
+
+        cout << a << " " << b << endl;
     }
     
     return 0;

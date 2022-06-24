@@ -20,21 +20,45 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+        cin >> n;
+        int a[n];
+        rep(i,0,n) cin >> a[i];
 
+        map<int, pair<int, vector<int>>> sizes;
 
+        rep(i,0,n) {
+            sizes[a[i]].fi++;
+            sizes[a[i]].se.push_back(i);
+        }
+
+        bool done = false;
+
+        for (auto&it : sizes) {
+            if (it.se.fi < 2) {
+                done = true;
+                break;
+            }
+        }
+
+        if (done) cout << -1 << endl;
+        else {
+            
+            for (auto&it : sizes) {
+                for (int i=1; i < it.se.fi; i++) {
+                    cout << it.se.se[i]+1 << " ";
+                }
+                cout << it.se.se[0]+1 << " ";
+            }
+
+            cout << endl; 
+        }
     }
     
     return 0;

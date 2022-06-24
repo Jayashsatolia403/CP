@@ -20,21 +20,44 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+        cin >> n;
+        VI v(n, 0);
+        rep(i, 0, n) {
+            cin >> v[i];
+        }
+
+        map<int, int> count;
+
+        rep(i, 0, n) {
+            count[v[i]]++;
+        }
+
+        int odds = 0, evens=0;
+
+        for (auto it : count) {
+            if (it.se % 2 == 0) {
+                evens++;
+            } else {
+                odds++;
+            }
+        }
+
+        if (evens % 2 != 0) {
+            odds += evens > 0 ? evens-1: 0;
+        }
+        else {
+            odds += evens > 0 ? evens : 0;
+        }
 
 
+        cout << odds << endl;
     }
     
     return 0;

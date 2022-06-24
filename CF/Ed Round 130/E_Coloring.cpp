@@ -20,21 +20,17 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
-    int t;
-    cin >> t;
     
-    while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+    cin >> n;
 
+    rep (i, 0, n) {
+        int x, y;
+        cin >> x >> y;
 
+        
     }
     
     return 0;

@@ -20,21 +20,21 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+        cin >> n >> m;
 
+        int ranges = n/5+1, effected_range = (m-1)/5+1;
 
+        if (effected_range >= ranges) cout << 0 << endl;
+        else {
+            cout << ranges - effected_range << endl;
+        }
     }
     
     return 0;

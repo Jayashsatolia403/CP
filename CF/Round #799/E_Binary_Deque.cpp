@@ -20,21 +20,39 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+        cin >> n >> m;
+        VI v(n, 0);
+        rep(i, 0, n) {
+            cin >> v[i];
+        }
 
+        int left = 0, right = 0, sum = 0, result=-1;
 
+        while (left < n && right < n) {
+            sum += v[right];
+
+            while (sum > m) {
+                sum -= v[left];
+                left++;
+            }
+
+            if (sum == m) {
+                result = max(result, right - left + 1);
+            }
+
+            if (sum <= m) {
+                right++;
+            } 
+        }
+
+        cout << (result == -1 ? -1 : n - result) << endl;
     }
     
     return 0;

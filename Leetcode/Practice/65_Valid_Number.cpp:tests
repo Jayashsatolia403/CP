@@ -1,0 +1,54 @@
+[
+	{
+		"correct_answers":
+		[
+			"1"
+		],
+		"test": "0\n"
+	},
+	{
+		"correct_answers":
+		[
+			"0"
+		],
+		"test": "e\n"
+	},
+	{
+		"correct_answers":
+		[
+			"0"
+		],
+		"test": ".\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1"
+		],
+		"test": "+6e-1\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1"
+		],
+		"test": "-123.456e789\n"
+	},
+	{
+		"correct_answers":
+		[
+			"0"
+		],
+		"test": "99e2.5\n"
+	},
+	{
+		"correct_answers":
+		[
+			"1"
+		],
+		"test": ".1\n"
+	},
+	{
+		"test": "0e\n"
+	}
+]

@@ -20,21 +20,45 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+        cin >> n >> m;
+        vector<ll> a(n);
+        rep(i, 0, n) {
+            cin >> a[i];
+            a[i] *= pow(2, i);
+        }
 
+        vector<bool> tracks(n, false);
 
+        int left = 0, right = 0, count = 0, bads = 0;
+
+        while (left < n && right < n) {
+
+            if (right - left + 1 > m) {
+                if (bads == 0) count++;
+                
+                if (tracks[left]) {
+                    bads--;
+                }
+
+                left++;
+            }
+
+            if (right < n-1 && a[right] >= a[right+1]) {
+                tracks[right] = true;
+                bads++;
+            }
+
+            right++;
+        }
+
+        cout << count << endl;
     }
     
     return 0;

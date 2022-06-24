@@ -20,21 +20,28 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
-    int t;
-    cin >> t;
-    
-    while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+    cin >> n >> m;
+    vector<ll> v(n);
+    rep (i, 0, n) cin >> v[i];
 
+    vector<ll> prefs(n+1);
 
+    sort(all(v));
+
+    rep (i, 0, v.size()) {
+        prefs[i+1] += v[i] + prefs[i];; 
+    }
+
+    rep (i, 0, m) {
+        int x, y;
+        cin >> x >> y;
+
+        ll min_selected = prefs[n-(x-y)] - prefs[n-x];
+
+        cout << min_selected << endl;
     }
     
     return 0;

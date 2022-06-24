@@ -20,21 +20,42 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+        cin >> n;
+        string s,p;
+        cin >> s >> p;
 
+        bool result = true;
 
+        map<char,int> mp;
+        rep (i, 0, SZ(p)) {
+            mp[p[i]]++;
+        }
+        rep (i, 0, SZ(s)) {
+            if (mp.find(s[i]) == mp.end()) {
+                result = false;
+                break;
+            }
+            mp[s[i]]--;
+        }
+
+        if (!result) {cout << "NO" << endl; continue; }
+
+        rep (i, 0, n) {
+            if (s[i] != p[i]) {
+                if (s[i] == 'a') continue;
+                if (i > 0 && s[i-1] == s[i]-1) continue;
+                else { cout << " >> " << i << endl; result = false; break; }
+            }
+        }
+
+        cout << (result ? "YES" : "NO") << endl;
     }
     
     return 0;

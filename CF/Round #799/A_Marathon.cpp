@@ -20,9 +20,7 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
@@ -31,9 +29,14 @@ int main() {
     while (t--) {
         int a, b, c, d;
         cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
 
+        int count = 0;
+
+        if (a < b) count++;
+        if (a < c) count++;
+        if (a < d) count++;
+
+        cout << count << endl;
 
     }
     

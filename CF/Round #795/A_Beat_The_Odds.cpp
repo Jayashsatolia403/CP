@@ -20,21 +20,25 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+        cin >> n;
+        int a[n];
+        rep(i,0,n) cin >> a[i];
 
+        // get min of no of even and odds in array
+        int min_even=0, min_odd=0;
+        rep(i,0,n) {
+            if (a[i]%2==0) min_even++;
+            else min_odd++;
+        }
 
+        cout << min(min_even, min_odd) << endl;
     }
     
     return 0;

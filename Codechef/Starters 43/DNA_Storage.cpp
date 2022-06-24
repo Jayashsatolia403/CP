@@ -20,21 +20,36 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
+        cin >> n;
         string s;
         cin >> s;
 
+        int idx = 0;
+	    
+	    string result = "";
+	    
+	    while (idx < n) {
+	       string check = "";
 
+           check += s[idx];
+           check += s[idx+1];
+
+	       if (check == "00") result += 'A';
+	       else if (check == "01") result += 'T';
+	       else if (check == "10") result += 'C';
+	       else if (check == "11") result += 'G';
+	        
+	       idx += 2;
+	    }
+
+        cout << result << endl;
     }
     
     return 0;

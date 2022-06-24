@@ -20,21 +20,42 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-bool dfs(string s, )
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        int a, b, c, d;
-        cin >> a >> b >> c >> d;
-        string s;
-        cin >> s;
+        cin >> n;
+        VI v(n);
+        rep(i, 0, n) {
+            cin >> v[i];
+        }
 
+        map<int, int> count;
 
+        int cur_count = 0, cur=0;
+
+        VI curs(n), curs_count(n);
+
+        rep(i, 0, n) {
+            count[v[i]]++;
+
+            if (count[v[i]] > cur_count) {
+                cur_count = count[v[i]];
+                cur = v[i];
+            }
+
+            curs[i] = cur;
+            curs_count[i] = cur_count;
+        }
+
+        rep (i, 0, n) {
+            if (curs_count[i] - i > ) {
+
+            }
+        }
     }
     
     return 0;

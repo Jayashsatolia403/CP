@@ -1,0 +1,6 @@
+How does a CPU handle sorting with a limited RAM and a hard disk that can have larger amount of data?
+
+    - Divide data into chunks 
+    - sort them individually using merge sort and then dump them to a hard disk 
+    - merge them back together using merge k sorted arrays
+    - Code : external_sorting.cpp

@@ -29,33 +29,21 @@ int main() {
     while (t--) {
         cin >> n;
         VI v(n);
-        rep (i, 0, n) cin >> v[i];
+        rep(i, 0, n) cin >> v[i];
 
-        map<int,int> m;
+        bool bad = false, flip = false;
 
-        rep (i, 0, n) {
-            m[v[i]]++;
-        }
-
-        rep (i, 0, n) {
-            if (m[v[i]] == 1) {
-                m.erase(v[i]);
-            }
-        }
-
-        int i = 0;
-
-        for (i=0; i < n; i++) {
-            if (m.empty()) break;
+        rep (i, 1, n-1) {
+            if (v[i] < v[i-1]) flip = true;
             
-            if (m.find(v[i]) != m.end()) {
-                m[v[i]]--;
-
-                if (m[v[i]] == 1) m.erase(v[i]);
+            if (v[i] < v[i+1] && flip) {
+                bad = true;
+                break;
             }
+            
         }
 
-        cout << i << endl;
+        cout << (!bad ? "YES" : "NO") << endl;
     }
     
     return 0;

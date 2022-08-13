@@ -20,43 +20,46 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-    
+
+int ans = INT_MAX;
+
+int dfs(ll n, ll x, int steps) {
+
+    string s = to_string(x);
+
+    int len = s.size();
+    if (n-s.size()+steps >= ans) return INT_MAX;
+
+    if (len >= n) {
+        ans = min(ans, steps);
+        return ans;
+    }
+
+
+    VI v(10, 0);
+
+    for (char c : s) {
+        v[c-'0']++;
+    }
+
+    int result = INT_MAX;
+
+    for (int i=9; i >= 2; i--) {
+        if (v[i]) {
+            result = min(result, dfs(n, i*x, steps+1));
+        }
+    }
+
+    return result;
+}
     
 int main() {
-    int t;
-    cin >> t;
-    
-    while (t--) {
-        cin >> n;
-        VI v(n);
-        rep (i, 0, n) cin >> v[i];
+    ll n, x;
+    cin >> n >> x;
 
-        map<int,int> m;
+    int result = dfs(n, x, 0);
 
-        rep (i, 0, n) {
-            m[v[i]]++;
-        }
+    cout << (result == INT_MAX ? -1 : result) << endl;
 
-        rep (i, 0, n) {
-            if (m[v[i]] == 1) {
-                m.erase(v[i]);
-            }
-        }
-
-        int i = 0;
-
-        for (i=0; i < n; i++) {
-            if (m.empty()) break;
-            
-            if (m.find(v[i]) != m.end()) {
-                m[v[i]]--;
-
-                if (m[v[i]] == 1) m.erase(v[i]);
-            }
-        }
-
-        cout << i << endl;
-    }
-    
     return 0;
 }

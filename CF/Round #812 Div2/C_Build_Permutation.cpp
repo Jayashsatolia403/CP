@@ -20,7 +20,33 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-    
+
+
+int sq(int x) {
+    int sq = sqrt(x);
+
+    return sq*sq == x;
+}
+
+void solve(int x) {
+    if (x == -1) return;
+
+    for (int i=x; ; i++) {
+        if (sq(i)) {
+            int s = i-x;
+
+            solve(s-1);
+
+            while (x >= s) {
+                cout << x-- << " ";
+            }
+
+            break;
+        }
+    }
+}
+
+
     
 int main() {
     int t;
@@ -28,34 +54,8 @@ int main() {
     
     while (t--) {
         cin >> n;
-        VI v(n);
-        rep (i, 0, n) cin >> v[i];
-
-        map<int,int> m;
-
-        rep (i, 0, n) {
-            m[v[i]]++;
-        }
-
-        rep (i, 0, n) {
-            if (m[v[i]] == 1) {
-                m.erase(v[i]);
-            }
-        }
-
-        int i = 0;
-
-        for (i=0; i < n; i++) {
-            if (m.empty()) break;
-            
-            if (m.find(v[i]) != m.end()) {
-                m[v[i]]--;
-
-                if (m[v[i]] == 1) m.erase(v[i]);
-            }
-        }
-
-        cout << i << endl;
+        solve(n-1);
+        cout << endl;
     }
     
     return 0;

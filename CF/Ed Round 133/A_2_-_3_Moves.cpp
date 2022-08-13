@@ -28,34 +28,13 @@ int main() {
     
     while (t--) {
         cin >> n;
-        VI v(n);
-        rep (i, 0, n) cin >> v[i];
 
-        map<int,int> m;
+        int div_3 = n / 3, div_2 = n / 2;
+        int mod_3 = n % 3, mod_2 = n % 2;
 
-        rep (i, 0, n) {
-            m[v[i]]++;
-        }
-
-        rep (i, 0, n) {
-            if (m[v[i]] == 1) {
-                m.erase(v[i]);
-            }
-        }
-
-        int i = 0;
-
-        for (i=0; i < n; i++) {
-            if (m.empty()) break;
-            
-            if (m.find(v[i]) != m.end()) {
-                m[v[i]]--;
-
-                if (m[v[i]] == 1) m.erase(v[i]);
-            }
-        }
-
-        cout << i << endl;
+        if (!mod_3) cout << div_3 << endl;
+        else if (mod_3 == 2) cout << div_3+1 << endl;
+        else if (mod_3 == 1) cout << (div_3 ? div_3+1 : 2) << endl;
     }
     
     return 0;

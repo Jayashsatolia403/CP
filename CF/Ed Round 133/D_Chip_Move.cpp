@@ -20,43 +20,18 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-    
+
+
+vector<int> result;
+
+int dfs(int n, )
     
 int main() {
-    int t;
-    cin >> t;
-    
-    while (t--) {
-        cin >> n;
-        VI v(n);
-        rep (i, 0, n) cin >> v[i];
+    int n, k;
+    cin >> n >> k;
 
-        map<int,int> m;
+    result = VI(n, 0);
 
-        rep (i, 0, n) {
-            m[v[i]]++;
-        }
 
-        rep (i, 0, n) {
-            if (m[v[i]] == 1) {
-                m.erase(v[i]);
-            }
-        }
-
-        int i = 0;
-
-        for (i=0; i < n; i++) {
-            if (m.empty()) break;
-            
-            if (m.find(v[i]) != m.end()) {
-                m[v[i]]--;
-
-                if (m[v[i]] == 1) m.erase(v[i]);
-            }
-        }
-
-        cout << i << endl;
-    }
-    
     return 0;
 }

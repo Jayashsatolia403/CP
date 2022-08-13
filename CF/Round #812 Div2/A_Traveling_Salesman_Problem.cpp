@@ -28,34 +28,20 @@ int main() {
     
     while (t--) {
         cin >> n;
-        VI v(n);
-        rep (i, 0, n) cin >> v[i];
-
-        map<int,int> m;
+        
+        int min_x=0, max_x=0, min_y=0, max_y=0;
 
         rep (i, 0, n) {
-            m[v[i]]++;
+            int a, b;
+            cin >> a >> b;
+
+            min_x = min(min_x, a);
+            max_x = max(max_x, a);
+            min_y = min(min_y, b);
+            max_y = max(max_y, b);
         }
 
-        rep (i, 0, n) {
-            if (m[v[i]] == 1) {
-                m.erase(v[i]);
-            }
-        }
-
-        int i = 0;
-
-        for (i=0; i < n; i++) {
-            if (m.empty()) break;
-            
-            if (m.find(v[i]) != m.end()) {
-                m[v[i]]--;
-
-                if (m[v[i]] == 1) m.erase(v[i]);
-            }
-        }
-
-        cout << i << endl;
+        cout << 2*(max_x-min_x + max_y-min_y) << endl;
     }
     
     return 0;

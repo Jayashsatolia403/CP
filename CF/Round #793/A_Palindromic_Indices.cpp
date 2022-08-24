@@ -20,48 +20,35 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-
-
-
-
-bool is_palindrome(string s, int x, int i, int j, vector<VI> &dp) {
-
-    if (i == x) i++;
-    if (j == x) j--;
-
-    if (i >= j) return true;
-
-    if (dp[i][j] != -1 && x < i && x > j) {
-        return dp[i][j];
-    }
-
-    if (s[i] == s[j]) {
-        dp[i][j] = is_palindrome(s, x, i+1, j-1, dp);
-        return dp[i][j];
-    }
-
-    return false;
-}
+    
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
+        int n;
         cin >> n;
         string s;
         cin >> s;
 
-        int count = 0;
+        int result = 0;
 
-        vector<VI> dp = vector<VI>(n, VI(n, -1));
+        int idx = n/2, idx2 = n/2+1;
+        if (n%2==1) idx2 = n/2;
+        
+        int i = idx;
 
-        for (int i = 0; i < n; i++) {
-            bool x = is_palindrome(s, i, 0, n-1, dp);
-            if (x) count++;
+        while (i >= 0 && s[i--] == s[idx]) {
+            result++;
         }
 
-        cout << count << endl;
+        i = idx2;
+
+
+        while (i < n && s[i++] == s[idx2]) result++;
+
+        cout << (n%2==1 ? result-1 : result) << endl;
     }
     
     return 0;

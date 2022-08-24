@@ -22,48 +22,65 @@ const int N=201000;
 int n,m,_;
 
 
-vector<VI> vis;
+int check_end(vector<VI> v, int i, int j, bool up, int sec) {
 
-int dfs(vector<VI> &v, int i, int j, int count, int cur) {
-    cout << cur << endl;
-    if (i < 0 || i >= n || j < 0 || j >= m || vis[i][j]) return INT_MIN;
-    if (count == n*m) return cur;
+    rep (x, j+1, n) {
+        sec += v[i][x]-sec > 0 ? v[i][x]-sec : 0;
+        sec++;
+    }
 
-    if (v[i][j] > cur) cur += abs(v[i][j] - cur);
-    else cur++;
+    if (up) i++;
+    else i--;
 
-    int x = INT_MAX;
-    
-    vis[i][j] = true;
-    x = max(cur, dfs(v, i+1, j, count+1, cur));
-    x = max(cur, dfs(v, i, j+1, count+1, cur));
-    x = max(cur, dfs(v, i-1, j, count+1, cur));
-    x = max(cur, dfs(v, i, j-1, count+1, cur));
-    vis[i][j] = false;
+    per (x, j+1, n) {
+        sec += v[i][x]-sec > 0 ? v[i][x]-sec : 0;
+        sec++;
+    }
 
-    return cur+x;
+    return sec;
 }
 
+int dfs(vector<VI> v, int i, int j, bool left, bool vertical, int sec) {
+    int n = v.size();
+
+    if (i < 0 || j < 0 || i >= 2 || j >= n) return sec;
+
+    int result = 0;
+
+    int right_diff = v[i][j+1] - sec;
+    right_diff = right_diff > 0 ? right_diff : 0;
+
+    if (left) {
+        if (i == 1) {
+            // int up_diff = v[i-1][j] - sec;
+            // up_diff = up_diff > 0 ? up_diff : 0;
+            result = min(dfs(v, i-1, j, false, true, max(v[i-1][j], sec+1)), check_end(v, i, j, false, sec+1));
+        }
+        else {
+            // int down_diff = v[i+1][j] - sec;
+            // down_diff = down_diff > 0 ? down_diff : 0;
+            result = min(dfs(v, i+1, j, false, true, max(v[i+1][j], sec+1)), check_end(v, i, j, true, sec+1));
+        }
+    }
+    else if (vertical) {
+        result = min(dfs(v, i+1, j, true, false, max(v[i][j+1], sec+1)), check_end(v, i, j, i==0, sec+1));
+    }
+
+    return result;
+}
 
 
 int main() {
     int t;
     cin >> t;
-
     
     while (t--) {
-        cin >> m;
-        n = 2;
-        vis = vector<VI>(n, VI(m, 0));
-        vector<VI> v(n, VI(m, 0));
-        rep(i,0,m) v[0][i] = i+1;
-        rep(i,0,m) v[1][i] = i+1;
+        cin >> n;
+        vector<VI> v(2, VI(n));
+        rep (i, 0, n) cin >> v[0][i];
+        rep (i, 0, n) cin >> v[1][i];
 
-        int result =  dfs(v, 0, 0, 0, 0);
-
-        cout << " > " << result << endl;
-
-        break;
+        cout << dfs(v, 0, 0, true, false, 0) << endl;
     }
     
     return 0;

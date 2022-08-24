@@ -30,39 +30,46 @@ int main() {
         string s;
         cin >> s;
 
-        stack<int> check;
+        n = s.size();
 
-        bool bad = false;
+        int op = 0, cl = 0, q=0;
 
-        // rep (i, 0, SZ(s)) {
-        //     if (s[i] == '(') check.push(i);
-        //     else if (s[i] == ')') {
-        //         if (check.empty()) {
-        //             bad = true;
-        //         }
-        //         check.pop();
-        //     }
-        // }
+        for (int i : s) {
+            if (i == '(') op++;
+            else if (i == ')') op--;
+            else q++;
+        }
 
-        // if (bad) { cout << "NO" << endl; continue; }
+        if (q <= 1) {
+            cout << "YES" << endl;
+            continue;
+        }
+
+        op = (q-op)/2;
 
         int count = 0;
 
-        rep (i, 0, SZ(s)) {
-            if (s[i] == '?') count++;
-            else if (count>2 && count%2==0) {
-                bad = true;
-                break;
+        rep (i,0,n) {
+
+            if (s[i]=='?') {
+                count++;
+                if (count < op) s[i] = '(';
+                else if (count == op) s[i] = ')';
+                else if (count == op+1) s[i] = '(';
+                else s[i] = ')';
             }
-            else count = 0;
         }
 
-        if (count>2 && count%2==0) {
-            bad = true;
+        int x = 0;
+
+        rep (i, 0, n) {
+            if (s[i] == '(') x++;
+            else x--;
+
+            if (x < 0) { x = -1; break; }
         }
 
-        if (bad) { cout << "NO" << endl; continue; }
-        else cout << "YES" << endl;
+        cout << (x != 0 ? "YES" : "NO") << endl; 
     }
     
     return 0;

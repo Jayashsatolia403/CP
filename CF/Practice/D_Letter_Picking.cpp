@@ -21,45 +21,28 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
 const int N=201000;
 int n,m,_;
     
-    
+
+bool dfs(string s, int l, int r, bool turn, vector<vector<VI>> &dp, string left, string right) {
+    if (l > r) return true;
+
+    if (l==r) {
+        if (turn) left+=s[l];
+        else right += s[r];
+    }
+}
+
+
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        cin >> n >> m;
-        int x= n, y = m;
+        string s;
+        cin >> s;
 
-        int a = 1, b = m-2;
+        vector<vector<VI>> dp(2001, vector<VI>(2001, VI(2)));
 
-        vector<VI> v(n, VI(m, 0));
-
-        int i = 0;
-
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
-            }
-
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
-            }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
-        }
-
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
-        }
+        cout << (dfs(s, 0, s.size()-1, true, dp, "", "")?"Alice":"Bob") << endl;
     }
     
     return 0;

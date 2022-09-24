@@ -20,45 +20,32 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
 int n,m,_;
-    
+
     
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        cin >> n >> m;
-        int x= n, y = m;
+        int n, m, x, y, r;
+        cin >> n >> m >> x >> y >> r;
 
-        int a = 1, b = m-2;
+        int a = x-r;
+        int b = y-r;
+        int c = x+r;
+        int d = y+r;
 
-        vector<VI> v(n, VI(m, 0));
-
-        int i = 0;
-
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
-            }
-
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
-            }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
+        if ((a <= 1 && b <= 1) || (a <= 1 && c >= n)) {
+            cout << -1 << endl;
         }
-
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
+        else if (b <= 1 && d >= m) {
+            cout << -1 << endl;
+        }
+        else if (c >= n && d >= m) {
+            cout << -1 << endl;
+        }
+        else {
+            cout << n+m-2 << endl;
         }
     }
     

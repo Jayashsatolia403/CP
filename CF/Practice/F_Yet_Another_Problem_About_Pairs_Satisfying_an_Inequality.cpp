@@ -27,39 +27,29 @@ int main() {
     cin >> t;
     
     while (t--) {
-        cin >> n >> m;
-        int x= n, y = m;
-
-        int a = 1, b = m-2;
-
-        vector<VI> v(n, VI(m, 0));
-
-        int i = 0;
-
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
+        cin >> n;
+        vector<ll> v, indexes(n*4, 0);
+        ll count = 0;
+        rep (i, 0, n) {
+            ll x;
+            cin >> x;
+            if (x < i+1) {
+                v.push_back(x);
+                indexes[i] = count++;
             }
-
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
-            }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
+            else indexes[i] = count;
         }
 
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
+        n = v.size()-1;
+
+        ll result = 0;
+
+        for (ll i : v) {
+            i = i >= indexes.size() ? indexes.size()-1 : i;
+            if (i>0)result += indexes[i-1];
         }
+
+        cout << result << endl;
     }
     
     return 0;

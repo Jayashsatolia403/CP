@@ -21,45 +21,43 @@ ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
 const int N=201000;
 int n,m,_;
     
-    
+vector<VI> dp;
+
+int dfs(VI v, int idx, int iq, int score) {
+    int n = v.size();
+    if (idx >= n || iq <= 0) return score;
+
+    // if (dp[idx][iq] != -1) return dp[idx][iq];
+
+    int count = 0;
+
+    while (idx < n && iq >= v[idx]) {
+        idx++;
+        count++;
+    }
+
+    score += count;
+
+    if (idx == n) return score;
+
+    return max(dfs(v, idx+1, iq-1, score+1), dfs(v, idx+1, iq, score));
+}
+
+
+
 int main() {
     int t;
     cin >> t;
     
     while (t--) {
-        cin >> n >> m;
-        int x= n, y = m;
+        int iq;
+        cin >> n >> iq;
+        VI v(n);
+        rep (i, 0, n) cin >> v[i];
 
-        int a = 1, b = m-2;
+        // dp = vector<VI>(n, VI(10000, -1));
 
-        vector<VI> v(n, VI(m, 0));
-
-        int i = 0;
-
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
-            }
-
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
-            }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
-        }
-
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
-        }
+        cout << dfs(v, 0, iq, 0) << endl;
     }
     
     return 0;

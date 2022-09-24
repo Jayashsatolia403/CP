@@ -27,39 +27,24 @@ int main() {
     cin >> t;
     
     while (t--) {
-        cin >> n >> m;
-        int x= n, y = m;
+        cin >> n;
 
-        int a = 1, b = m-2;
+        string result = "";
+        int cur = 9;
 
-        vector<VI> v(n, VI(m, 0));
-
-        int i = 0;
-
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
+        while (n) {
+            if (cur >= n) {
+                result += '0'+n;
+                break;
             }
-
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
-            }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
+            result += '0'+cur;
+            n -= cur;
+            cur--;
         }
 
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
-        }
+        reverse(all(result));
+
+        cout << result << endl;
     }
     
     return 0;

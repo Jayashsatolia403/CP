@@ -19,7 +19,6 @@ ll powmod(ll a,ll b) {ll res=1;a%=mod; assert(b>=0); for(;b;b>>=1){if(b&1)res=re
 ll gcd(ll a,ll b) { return b?gcd(b,a%b):a;}
     
 const int N=201000;
-int n,m,_;
     
     
 int main() {
@@ -27,39 +26,15 @@ int main() {
     cin >> t;
     
     while (t--) {
-        cin >> n >> m;
-        int x= n, y = m;
+        string a, b;
+        cin >> a >> b;
+        map<char,int> m;
 
-        int a = 1, b = m-2;
 
-        vector<VI> v(n, VI(m, 0));
+        for (char c : a) m[c]++;
+        for (char c : b) m[c]++;
 
-        int i = 0;
-
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
-            }
-
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
-            }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
-        }
-
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
-        }
+        cout << m.size()-1 << endl;
     }
     
     return 0;

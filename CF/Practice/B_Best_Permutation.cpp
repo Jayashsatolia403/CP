@@ -27,39 +27,21 @@ int main() {
     cin >> t;
     
     while (t--) {
-        cin >> n >> m;
-        int x= n, y = m;
+        cin >> n;
+        
+        int x = n-1;
 
-        int a = 1, b = m-2;
-
-        vector<VI> v(n, VI(m, 0));
-
-        int i = 0;
-
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
-            }
-
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
-            }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
+        if (n%2) {
+            x = n-4;
         }
 
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
+        per(i, 1, x) {
+            cout << i << " ";
         }
+
+        if (n%2) rep (i, x, n-1) cout << i << " ";
+
+        cout << n-1 << " " << n << endl;
     }
     
     return 0;

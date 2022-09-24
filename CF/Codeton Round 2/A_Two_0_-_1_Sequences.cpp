@@ -28,37 +28,31 @@ int main() {
     
     while (t--) {
         cin >> n >> m;
-        int x= n, y = m;
+        string s1, s2;
+        cin >> s1 >> s2;
 
-        int a = 1, b = m-2;
+        int i = n-1, bad = false;
 
-        vector<VI> v(n, VI(m, 0));
-
-        int i = 0;
-
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
+        per (j, 0, m) {
+            if (s1[i] == s2[j]) {
+                i--;
             }
-
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
+            else {
+                while (s1[i] != s2[j]) {
+                    i--;
+                    if (i < 0) {
+                        bad = true;
+                        break;
+                    }
+                }
             }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
         }
 
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
+        if (!bad) {
+            cout << "YES" << endl;
+        }
+        else {
+            cout << "NO" << endl;
         }
     }
     

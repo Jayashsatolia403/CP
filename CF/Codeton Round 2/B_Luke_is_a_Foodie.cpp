@@ -28,38 +28,23 @@ int main() {
     
     while (t--) {
         cin >> n >> m;
-        int x= n, y = m;
+        VI v(n);
+        rep (i, 0, n) cin >> v[i];
 
-        int a = 1, b = m-2;
+        int mn = INT_MAX, mx = INT_MIN, count=0;
 
-        vector<VI> v(n, VI(m, 0));
+        for (int i : v) {
+            mn = min(i, mn);
+            mx = max(i, mx);
 
-        int i = 0;
-
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
+            if (abs(mn-mx) > 2*m) {
+                count++;
+                mn = i;
+                mx = i;
             }
-
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
-            }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
         }
 
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
-        }
+        cout << count << endl;
     }
     
     return 0;

@@ -27,38 +27,27 @@ int main() {
     cin >> t;
     
     while (t--) {
-        cin >> n >> m;
-        int x= n, y = m;
+        int n, x, y;
+        cin >> n >> x >> y;
+        VI v1(n), v2(n);
+        rep(i, 0, n) cin >> v1[i];
+        rep(i, 0, n) cin >> v2[i];
 
-        int a = 1, b = m-2;
+        VI v;
 
-        vector<VI> v(n, VI(m, 0));
-
-        int i = 0;
-
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
+        int count = 0;
+        rep (i, 0, n) {
+            if (v1[i] != v2[i]) {, the cost of the operation is x
+                count++;
+                v.pb(i);
             }
+        } 
 
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
-            }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
+        if (count%2) {
+            cout << -1 << endl;
         }
+        else {
 
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
         }
     }
     

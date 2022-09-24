@@ -27,38 +27,29 @@ int main() {
     cin >> t;
     
     while (t--) {
-        cin >> n >> m;
-        int x= n, y = m;
+        string t;
+        cin >> t;
+        cin >> n;
+        
+        VI v(t.size()), result;
 
-        int a = 1, b = m-2;
+        rep (i, 0, n) {
+            string s;
+            cin >> s;
 
-        vector<VI> v(n, VI(m, 0));
+            rep(j, 0, t.size()) {
+                bool bad = false;
 
-        int i = 0;
+                rep (x, j, j+s.size()) {
+                    if (t[x] != s[j-x]) bad = true;
+                }
 
-        bool done = false;
-
-        while (i < n) {
-            
-            rep (j, a, b+1) {
-                v[i][j] = 1;
-                if (n-i > 2) v[n-i-1][j] = 1;
+                if (!bad) {
+                    rep (x, j, j+s.size()) {
+                        v[x] = 1;
+                    }
+                }
             }
-
-            rep (j, a, n-a) {
-                v[j][a-1] = 1;
-                v[j][b+1] = 1;
-            }
-
-            i+=2;
-            n-=2;
-            a++;
-            b--;
-        }
-
-        rep (i, 0, x) {
-            rep (j, 0, y) cout << v[i][j] << " ";
-            cout << endl;
         }
     }
     

@@ -1,0 +1,1 @@
+{"name":"Local: decrypt","url":"/home/jayash/Desktop/CP/Placement Diaries/Companies/Oracle/decrypt.cpp","tests":[{"id":1667959371177,"input":"3\n2\nA1A 2AB\n3\nCB BC BAB\n3\nA1A3 AAB BD1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/jayash/Desktop/CP/Placement Diaries/Companies/Oracle/decrypt.cpp","group":"local","local":true}

@@ -1,0 +1,7 @@
+Jayash is my junior from IIT BHU and is good fit for this role because : 
+
+1. He has a deep passion to technology and is a great learner. He has played with different technologies and is always keen to learn more. For example he is currently leading a virtual reality lab project in IIT BHU in 4 different engineering departments to solve the issue of ratio of students vs labs.
+2. He has hands on experience by building projects in many technologies such as Django, Flutter, Postgresql, AWS EC2, Docker to name a few. 
+3. He is a great problem solver and is always ready to take up challenges.
+4. During his internship at goglocal, he utilised his backend developement skills to work on API, integrating solutions from partner brands such as shipsy, fedex, shiprocket and shopify etc. 
+5. He is a great team player as well as good leader according to requirement of situation. He has good communication skills which allow him to express his ideas to team.
